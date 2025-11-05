@@ -12,7 +12,7 @@ var iceSpear = preload("res://Player/Attack/ice_spear.tscn")
 
 #icespear
 var icespear_ammo = 0
-var icespear_baseammo = 1
+var icespear_baseammo = 5
 var icespear_attackspeed = 1.5
 var icespear_level = 1
 
@@ -77,12 +77,17 @@ func _on_ice_spear_attack_timer_timeout():
 			iceSpearAttackTimer.stop()
 
 func get_random_target():
-	pass
+	if enemy_close.size() > 0:
+		return enemy_close.pick_random().global_position
+	else:
+		return Vector2.UP
 
 
 func _on_enemy_detection_area_body_entered(body):
-	pass # Replace with function body.
+	if not enemy_close.has(body):
+		enemy_close.append(body)
 
 
 func _on_enemy_detection_area_body_exited(body):
-	pass # Replace with function body.
+	if enemy_close.has(body):
+		enemy_close.erase(body)

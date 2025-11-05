@@ -4,3 +4,5 @@ res://Player/Attack/ice_spear.tscn
 res://Player/Attack/ice_spear.gd
 res://Player/player.tscn
 res://Player/player.gd
+res://Enemy/enemy.tscn
+res://Utility/hurt_box.gd
